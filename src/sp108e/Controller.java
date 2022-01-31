@@ -1,10 +1,11 @@
 package sp108e;
 
 
+
 import java.net.Socket;
 import java.net.InetSocketAddress;
+import java.nio.charset.StandardCharsets;
 
-import kotlin.text.Charsets;
 
 public class Controller {
     private final String ctrl_address;
@@ -36,7 +37,7 @@ public class Controller {
             retbuf.append((char) ((top << 4) + bot));
             i += 2;
         }
-        return retbuf.toString().getBytes(Charsets.ISO_8859_1);
+        return retbuf.toString().getBytes(StandardCharsets.ISO_8859_1);
 
     }
 
@@ -215,7 +216,7 @@ public class Controller {
         return bytesToHex(result);
     }
 
-    private Settings getDeviceSettings() throws Exception {
+    public Settings getDeviceSettings() throws Exception {
        return new Settings(getDeviceRawSettings());
     }
 
